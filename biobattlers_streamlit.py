@@ -51,19 +51,45 @@ def fetch_rarity(species_name):
         pass
     return "???"
 
+# --- Custom Styling ---
+st.markdown(
+    f"""
+    <style>
+    .stApp {{
+        background-image: url("https://biobattlers-images.s3.eu-north-1.amazonaws.com/Background.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        color: white;
+    }}
+    .button-img {{
+        border: none;
+        background: none;
+        padding: 0;
+        cursor: pointer;
+    }}
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 # --- Streamlit App ---
 st.set_page_config(page_title="BioBattlers Prototype", layout="centered")
-st.title("🪲 BioBattlers Scanner")
+st.title("\U0001FAB2 BioBattlers Scanner")
 st.write("Scan an insect to see if we’ve got a monster card for it!")
 
 # Initialize captured collection from cookie
 if 'collection' not in st.session_state:
     st.session_state.collection = get_cookies()
 
+if 'show_collection' not in st.session_state:
+    st.session_state.show_collection = False
+
 # Upload image
 uploaded_file = st.file_uploader("Upload an insect photo", type=["jpg", "jpeg", "png"])
 
 if uploaded_file:
+    scan_clicked = st.image("https://biobattlers-images.s3.eu-north-1.amazonaws.com/Scan.png", use_column_width=True)
     with st.spinner("Scanning with Kindwise..."):
         headers = {
             "Api-Key": KINDWISE_API_KEY,
@@ -125,10 +151,15 @@ if uploaded_file:
         else:
             st.error("Error contacting Kindwise API. Try again later.")
 
-# Display collection
+# View Collection Toggle
 if st.session_state.collection:
-    st.subheader("📚 Your Collection")
-    for creature in st.session_state.collection:
-        st.image(creature["imageUrl"], width=150, caption=creature["name"])
-        st.text(creature["stats"])
-        st.markdown(f"**Rarity:** {creature['rarity']}")
+    if st.button("View Collection"):
+        st.session_state.show_collection = not st.session_state.show_collection
+
+    if st.session_state.show_collection:
+        st.image("https://biobattlers-images.s3.eu-north-1.amazonaws.com/Collection.png", width=200)
+        st.subheader("\U0001F4DA Your Collection")
+        for creature in st.session_state.collection:
+            st.image(creature["imageUrl"], width=150, caption=creature["name"])
+            st.text(creature["stats"])
+            st.markdown(f"**Rarity:** {creature['rarity']}")
