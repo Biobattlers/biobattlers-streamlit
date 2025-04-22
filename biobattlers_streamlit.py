@@ -55,20 +55,22 @@ def fetch_rarity(species_name):
 st.markdown(
     f"""
     <style>
-    .stApp {{
-        background-image: url("https://biobattlers-images.s3.eu-north-1.amazonaws.com/Background.png");
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        color: white;
-    }}
-    .button-img {{
-        border: none;
-        background: none;
-        padding: 0;
-        cursor: pointer;
-    }}
-    </style>
+body {
+    background-image: url('https://biobattlers-images.s3.eu-north-1.amazonaws.com/Background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.stApp {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.button-img {
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+}
+</style>
     """,
     unsafe_allow_html=True
 )
