@@ -9,18 +9,34 @@ import json
 st.markdown(
     """
     <style>
-    .main {
+    body {
+        background: none !important;
+    }
+    .stApp {
+        background: none;
+        position: relative;
+    }
+
+    .stApp::before {
+        content: "";
         background-image: url("https://biobattlers-images.s3.eu-north-1.amazonaws.com/Background.png");
         background-size: cover;
         background-repeat: no-repeat;
-        background-position: center;
         background-attachment: fixed;
+        background-position: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        opacity: 0.3;
+        z-index: -1;
     }
 
     .block-container {
         background-color: rgba(0, 0, 0, 0.6);
-        padding: 2rem;
         border-radius: 12px;
+        padding: 2rem;
     }
 
     h1, h2, h3, p, span, div {
