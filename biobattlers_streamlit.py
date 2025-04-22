@@ -47,31 +47,41 @@ if uploaded_file:
         }
         files = {"images": uploaded_file.getvalue()}
 
-        # Proper format for requests with file-like object
         response = requests.post(KINDWISE_API_URL, headers=headers, files={"images": uploaded_file})
 
         if response.status_code == 201:
             data = response.json()
             try:
                 species_name = data["result"]["classification"]["suggestions"][0]["name"]
-                filename = species_name.lower().replace(" ", "_") + ".png"
-                image_url = AWS_BUCKET_URL + filename
 
-                # Check if image exists on AWS (very basic check)
+                # Split genus and species
+                parts = species_name.split()
+                genus = parts[0].lower()
+                species = parts[1].lower() if len(parts) > 1 else ""
+
+                # Try full species first
+                filename = f"{genus}_{species}.png"
+                image_url = AWS_BUCKET_URL + filename
                 img_check = requests.get(image_url)
-                if img_check.status_code == 200:
-                    stats = "Attack: 10 | Defense: 8 | Speed: 7"  # Placeholder stats
-                    monster_card = {
-                        "name": species_name,
-                        "imageUrl": image_url,
-                        "stats": stats
-                    }
+
+                # If not found, try genus only
+                if img_check.status_code != 200:
+                    filename = f"{genus}.png"
+                    image_url = AWS_BUCKET_URL + filename
+                    img_check = requests.get(image_url)
+
+                # Final fallback if still not found
+                if img_check.status_code != 200:
+                    image_url = "https://via.placeholder.com/300x200.png?text=Monster+Coming+Soon"
+                    stats = "???"
                 else:
-                    monster_card = {
-                        "name": species_name,
-                        "imageUrl": "https://via.placeholder.com/300x200.png?text=Monster+Coming+Soon",
-                        "stats": "???"
-                    }
+                    stats = "Attack: 10 | Defense: 8 | Speed: 7"
+
+                monster_card = {
+                    "name": species_name,
+                    "imageUrl": image_url,
+                    "stats": stats
+                }
 
                 st.image(monster_card["imageUrl"], caption=monster_card["name"])
                 st.text(monster_card["stats"])
