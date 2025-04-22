@@ -1,3 +1,27 @@
+st.markdown(
+    """
+    <style>
+    .main {
+        background-image: url("https://biobattlers-images.s3.eu-north-1.amazonaws.com/Background.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-attachment: fixed;
+    }
+
+    .block-container {
+        background-color: rgba(0, 0, 0, 0.6);
+        padding: 2rem;
+        border-radius: 12px;
+    }
+
+    h1, h2, h3, p, span, div {
+        color: #ffffff !important;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 import os
 import requests
 import streamlit as st
