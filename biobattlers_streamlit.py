@@ -5,48 +5,6 @@ import streamlit as st
 import streamlit.components.v1 as components
 import json
 
-# --- STYLE ---
-st.markdown(
-    """
-    <style>
-    body {
-        background: none !important;
-    }
-    .stApp {
-        background: none;
-        position: relative;
-    }
-
-    .stApp::before {
-        content: "";
-        background-image: url("https://biobattlers-images.s3.eu-north-1.amazonaws.com/Background.png");
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-position: center;
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        opacity: 0.3;
-        z-index: -1;
-    }
-
-    .block-container {
-        background-color: rgba(0, 0, 0, 0.6);
-        border-radius: 12px;
-        padding: 2rem;
-    }
-
-    h1, h2, h3, p, span, div {
-        color: #ffffff !important;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
 # API Keys and URLs
 KINDWISE_API_KEY = "NXDFLm5Gc7uH4H2spUOiqeRLcMDjj0PRcFBjD1cRfbPBzZzBEp"
 IUCN_API_KEY = "hbMZdzpTrj8UTF5d73211DMdpcRCdRBH1hCL"
