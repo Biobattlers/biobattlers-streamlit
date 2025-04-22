@@ -55,14 +55,12 @@ def fetch_rarity(species_name):
 st.markdown(
     f"""
     <style>
-body {
-    background-image: url('https://biobattlers-images.s3.eu-north-1.amazonaws.com/Background.png');
+[data-testid="stAppViewContainer"] > .main {
+    background-image: url("https://biobattlers-images.s3.eu-north-1.amazonaws.com/Background.png");
     background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-}
-.stApp {
-    background-color: rgba(0, 0, 0, 0.5);
 }
 .button-img {
     border: none;
