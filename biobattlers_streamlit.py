@@ -8,7 +8,17 @@ import json
 KINDWISE_API_KEY = "NXDFLm5Gc7uH4H2spUOiqeRLcMDjj0PRcFBjD1cRfbPBzZzBEp"
 KINDWISE_API_URL = "https://insect.kindwise.com/api/v1/identification"
 AWS_BUCKET_URL = "https://biobattlers-images.s3.eu-north-1.amazonaws.com/"
+IUCN_API_KEY = "hbMZdzpTrj8UTF5d73211DMdpcRCdRBH1hCL"
+IUCN_API_URL = "https://apiv3.iucnredlist.org/api/v3/species/"
 COOKIE_NAME = "biobattlers_collection"
+
+RARITY_MAP = {
+    "LC": "Common",
+    "NT": "Uncommon",
+    "VU": "Rare",
+    "EN": "Epic",
+    "CR": "Legendary"
+}
 
 # --- Cookie Helpers ---
 def get_cookies():
@@ -26,6 +36,20 @@ def set_cookies(collection):
         window.location.href = window.location.href.split('?')[0] + '?{COOKIE_NAME}=' + encodeURIComponent(JSON.stringify({json_collection}));
         </script>
     """, height=0)
+
+# --- Fetch rarity from IUCN ---
+def fetch_rarity(species_name):
+    try:
+        url = f"{IUCN_API_URL}{species_name.replace(' ', '%20')}?token={IUCN_API_KEY}"
+        response = requests.get(url)
+        if response.status_code == 200:
+            data = response.json()
+            if data.get("result"):
+                category = data["result"][0].get("category", "")
+                return RARITY_MAP.get(category, "???")
+    except:
+        pass
+    return "???"
 
 # --- Streamlit App ---
 st.set_page_config(page_title="BioBattlers Prototype", layout="centered")
@@ -54,6 +78,9 @@ if uploaded_file:
             try:
                 species_name = data["result"]["classification"]["suggestions"][0]["name"]
 
+                # Get rarity
+                rarity = fetch_rarity(species_name)
+
                 # Split genus and species
                 parts = species_name.split()
                 genus = parts[0].lower()
@@ -80,11 +107,13 @@ if uploaded_file:
                 monster_card = {
                     "name": species_name,
                     "imageUrl": image_url,
-                    "stats": stats
+                    "stats": stats,
+                    "rarity": rarity
                 }
 
                 st.image(monster_card["imageUrl"], caption=monster_card["name"])
                 st.text(monster_card["stats"])
+                st.markdown(f"**Rarity:** {monster_card['rarity']}")
 
                 if st.button("Capture This Creature"):
                     st.session_state.collection.append(monster_card)
@@ -102,3 +131,4 @@ if st.session_state.collection:
     for creature in st.session_state.collection:
         st.image(creature["imageUrl"], width=150, caption=creature["name"])
         st.text(creature["stats"])
+        st.markdown(f"**Rarity:** {creature['rarity']}")
