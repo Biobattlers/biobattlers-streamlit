@@ -12,7 +12,7 @@ COOKIE_NAME = "biobattlers_collection"
 
 # --- Cookie Helpers ---
 def get_cookies():
-    cookies = st.experimental_get_query_params().get(COOKIE_NAME, ["[]"])[0]
+    cookies = st.query_params.get(COOKIE_NAME, ["[]"])[0]
     try:
         return json.loads(cookies)
     except json.JSONDecodeError:
