@@ -150,3 +150,24 @@ if st.session_state.collection:
         st.image(creature["imageUrl"], width=150, caption=creature["name"])
         st.text(creature["stats"])
         st.text(f"Rarity: {creature.get('rarity', '???')}")
+        st.markdown("""
+    <style>
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #f0f2f6;
+            padding: 10px 0;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #6c757d;
+            z-index: 999;
+        }
+    </style>
+    <div class="footer">
+        This app has been created by Jack Llewellyn – <strong>BIOBATTLERS LTD</strong>.<br>
+        All rights reserved &copy; 2025
+    </div>
+""", unsafe_allow_html=True)
+
