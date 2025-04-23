@@ -1,15 +1,7 @@
 [theme]
-base="light"
-
-[server]
-enableCORS = false
-
-[client]
-showSidebarNavigation = false
+base = "light"
 
 [browser]
 gatherUsageStats = false
 serverAddress = "streamlit.app"
-gatherMetrics = false
-# 👇 Add your logo URL here
 favicon = "https://biobattlers-images.s3.eu-north-1.amazonaws.com/Logo.png"
