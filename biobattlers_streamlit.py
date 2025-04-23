@@ -1,3 +1,22 @@
+import streamlit as st
+
+def add_logo():
+    st.markdown(
+        """
+        <style>
+            [data-testid="stSidebarNav"] {
+                background-image: url("https://biobattlers-images.s3.eu-north-1.amazonaws.com/logo2.jpg");
+                background-repeat: no-repeat;
+                background-position: 20px 20px;
+                background-size: 150px auto;
+                padding-top: 140px;
+            }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
+add_logo()
 
 import os
 import requests
