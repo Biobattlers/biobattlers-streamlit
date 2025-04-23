@@ -1,5 +1,9 @@
 import streamlit as st
 
+# MUST be first Streamlit command
+st.set_page_config(page_title="BioBattlers Prototype", layout="centered")
+
+# Add logo to sidebar
 def add_logo():
     st.markdown(
         """
@@ -72,7 +76,6 @@ RARITY_MAP = {
 }
 
 # --- Streamlit App ---
-st.set_page_config(page_title="BioBattlers Prototype", layout="centered")
 st.title("🪲 BioBattlers Scanner")
 st.write("Scan an insect to see if we’ve got a monster card for it!")
 
