@@ -76,8 +76,9 @@ RARITY_MAP = {
 }
 
 # --- Streamlit App ---
-st.title("🪲 BioBattlers Scanner")
-st.write("Scan an insect to see if we’ve got a monster card for it!")
+st.title("🪲🐝BioBattlers Prototype🦋🐜")
+st.write("🔍Scan an insect!")
+st.write("Created by Jack Llewellyn")
 
 # Initialize captured collection from cookie
 if 'collection' not in st.session_state:
