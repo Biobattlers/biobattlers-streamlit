@@ -9,7 +9,7 @@ def add_logo():
         """
         <style>
             [data-testid="stSidebarNav"] {
-                background-image: url("https://biobattlers-images.s3.eu-north-1.amazonaws.com/logo2.jpg");
+                background-image: url("https://biobattlers-images.s3.eu-north-1.amazonaws.com/favicon+(2).ico");
                 background-repeat: no-repeat;
                 background-position: 20px 20px;
                 background-size: 150px auto;
