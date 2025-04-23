@@ -6,8 +6,8 @@ import streamlit.components.v1 as components
 import json
 
 # API Keys and URLs
-KINDWISE_API_KEY = "NXDFLm5Gc7uH4H2spUOiqeRLcMDjj0PRcFBjD1cRfbPBzZzBEp"
-IUCN_API_KEY = "hbMZdzpTrj8UTF5d73211DMdpcRCdRBH1hCL"
+KINDWISE_API_KEY = st.secrets["KINDWISE_API_KEY"]
+IUCN_API_KEY = st.secrets["IUCN_API_KEY"]
 KINDWISE_API_URL = "https://insect.kindwise.com/api/v1/identification"
 AWS_BUCKET_URL = "https://biobattlers-images.s3.eu-north-1.amazonaws.com/"
 COOKIE_NAME = "biobattlers_collection"
