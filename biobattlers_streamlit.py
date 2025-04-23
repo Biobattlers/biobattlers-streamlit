@@ -8,17 +8,18 @@ def add_logo():
     st.markdown(
         """
         <style>
-            [data-testid="stSidebarNav"] {
-                background-image: url("https://biobattlers-images.s3.eu-north-1.amazonaws.com/favicon+(2).ico");
+            section[data-testid="stSidebar"] {
+                background-image: url("https://biobattlers-images.s3.eu-north-1.amazonaws.com/logo2.jpg");
                 background-repeat: no-repeat;
-                background-position: 20px 20px;
-                background-size: 150px auto;
-                padding-top: 140px;
+                background-position: top center;
+                background-size: 160px;
+                padding-top: 170px;
             }
         </style>
         """,
         unsafe_allow_html=True
     )
+    
 
 add_logo()
 
