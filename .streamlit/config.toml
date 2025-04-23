@@ -4,4 +4,5 @@ base = "light"
 [browser]
 gatherUsageStats = false
 serverAddress = "streamlit.app"
-favicon = "https://biobattlers-images.s3.eu-north-1.amazonaws.com/Logo.png"
+favicon = "https://biobattlers-images.s3.eu-north-1.amazonaws.com/favicon+(2).ico"
+
