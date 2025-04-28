@@ -78,7 +78,7 @@ RARITY_MAP = {
 
 # --- Streamlit App ---
 st.title("🪲🐝BioBattlers Prototype🦋🐜")
-st.write("🔍Scan an insect!")
+st.write("🔍Scan an insect click below!")
 st.write("Created by Jack Llewellyn BioBattlers Ltd. All rights reserved (C) 2025")
 
 # Initialize captured collection from cookie
