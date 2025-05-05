@@ -73,18 +73,31 @@ def set_cookies(collection):
     """, height=0)
 
 # --- IUCN Rarity Lookup ---
+# --- IUCN Rarity Lookup with Genus Fallback ---
 def get_iucn_status(species_name):
-    query = species_name.replace(" ", "%20")
-    url = f"https://apiv3.iucnredlist.org/api/v3/species/{query}?token={IUCN_API_KEY}"
-    try:
-        response = requests.get(url)
-        if response.status_code == 200:
-            result = response.json()
-            if result['result']:
-                return result['result'][0]['category']
-    except:
-        pass
-    return "Unknown"
+    def fetch_status(query):
+        url = f"https://apiv3.iucnredlist.org/api/v3/species/{query}?token={IUCN_API_KEY}"
+        try:
+            response = requests.get(url)
+            if response.status_code == 200:
+                result = response.json()
+                if result.get('result'):
+                    return result['result'][0]['category']
+        except:
+            pass
+        return None
+
+    # Try full species first
+    species_query = species_name.replace(" ", "%20")
+    status = fetch_status(species_query)
+
+    # Fallback to genus only
+    if not status and " " in species_name:
+        genus_only = species_name.split()[0]
+        status = fetch_status(genus_only)
+
+    return status if status else "Unknown"
+
 
 RARITY_MAP = {
     "LC": "Common (🟢)",
