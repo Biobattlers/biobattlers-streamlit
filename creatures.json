@@ -199,6 +199,17 @@
         },
         "rarity": "Unknown"
     },
+    "bombus_cryptarum": {
+        "name": "Bombus cryptarum",
+        "image": "bombus.png",
+        "stats": {
+            "attack": 8,
+            "defense": 7,
+            "speed": 5
+        },
+        "rarity": "Unknown"
+
+    },
     "brachycaudus": {
         "name": "Brachycaudus",
         "image": "brachycaudus.png",
