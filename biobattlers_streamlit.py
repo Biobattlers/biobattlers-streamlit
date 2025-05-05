@@ -72,7 +72,7 @@ def set_cookies(collection):
         </script>
     """, height=0)
 
-# --- IUCN disabled ---
+# --- IUCN Placeholder ---
 def get_iucn_status(species_name):
     return "Unknown"
 
@@ -85,12 +85,15 @@ RARITY_MAP = {
     "Unknown": "???"
 }
 
-# --- Session state init ---
+# --- Session State Init ---
 if 'collection' not in st.session_state:
     st.session_state.collection = get_cookies()
 
 if 'kindwise_result' not in st.session_state:
     st.session_state.kindwise_result = None
+
+if 'last_uploaded_name' not in st.session_state:
+    st.session_state.last_uploaded_name = None
 
 # --- Upload + Scan ---
 st.markdown("### 📸 Upload an insect photo to scan:")
@@ -99,8 +102,8 @@ uploaded_file = st.file_uploader("", type=["jpg", "jpeg", "png"])
 if uploaded_file:
     with st.spinner("🔎 Scanning new Biobattler..."):
 
-        # --- Only call Kindwise if not already cached ---
-        if st.session_state.kindwise_result is None:
+        # --- Only scan if it's a new image ---
+        if uploaded_file.name != st.session_state.last_uploaded_name:
             headers = {
                 "Api-Key": KINDWISE_API_KEY,
                 "Accept": "application/json"
@@ -108,6 +111,7 @@ if uploaded_file:
             response = requests.post(KINDWISE_API_URL, headers=headers, files={"images": uploaded_file})
             if response.status_code == 201:
                 st.session_state.kindwise_result = response.json()
+                st.session_state.last_uploaded_name = uploaded_file.name
             else:
                 st.error("❌ Error contacting Kindwise API. Try again later.")
                 st.stop()
