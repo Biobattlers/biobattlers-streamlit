@@ -39,7 +39,7 @@ st.markdown(
 
 # --- Title & Subtitle ---
 st.markdown("<h1 style='text-align: center; color: #1f4e79;'>🪲 BioBattlers: Scan • Capture • Collect 🐝</h1>", unsafe_allow_html=True)
-st.markdown("<p style='text-align: center; font-size: 1.1em;'>Created by Jack Llewellyn – BioBattlers Ltd. All rights reserved (C) 2025</p>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; font-size: 1.1em;'>Created by Jack Llewellyn – BioBattlers Ltd. All rights reserved © 2025</p>", unsafe_allow_html=True)
 
 # --- Load Creature Stats from JSON ---
 try:
