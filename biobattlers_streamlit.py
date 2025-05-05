@@ -75,7 +75,7 @@ def set_cookies(collection):
 # --- IUCN Rarity Lookup ---
 def get_iucn_status(species_name):
     query = species_name.replace(" ", "%20")
-    url = f"https://apiv3.iucnredlist.org/api/v3/species/{query}?token={IUCN_API_KEY}"
+    url = f"https://apiv3.iucnredlist.org/api/v3/species/{query}?token={58FVzKxRbn6x3vJXdYuCw9YqL6PeFJ1xdi17}"
     try:
         response = requests.get(url)
         if response.status_code == 200:
@@ -104,7 +104,7 @@ st.markdown("### 📸 Upload an insect photo to scan:")
 uploaded_file = st.file_uploader("", type=["jpg", "jpeg", "png"])
 
 if uploaded_file:
-    with st.spinner("🔎 Scanning with Kindwise..."):
+    with st.spinner("🔎 Scanning new Biobattler..."):
         headers = {
             "Api-Key": KINDWISE_API_KEY,
             "Accept": "application/json"
