@@ -204,6 +204,16 @@
         "image": "bombus.png",
         "stats": {
             "attack": 8,
+            "defense": 6,
+            "speed": 5
+        },
+        "rarity": "Unknown"
+    },
+    "bombus_morrisoni": {
+        "name": "Bombus morrisoni",
+        "image": "bombus.png",
+        "stats": {
+            "attack": 10,
             "defense": 7,
             "speed": 5
         },
