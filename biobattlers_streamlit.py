@@ -50,7 +50,6 @@ except FileNotFoundError:
 
 # --- API Keys & URLs ---
 KINDWISE_API_KEY = st.secrets["KINDWISE_API_KEY"]
-IUCN_API_KEY = st.secrets["IUCN_API_KEY"]
 KINDWISE_API_URL = "https://insect.kindwise.com/api/v1/identification"
 AWS_BUCKET_URL = "https://biobattlers-images.s3.eu-north-1.amazonaws.com/"
 COOKIE_NAME = "biobattlers_collection"
@@ -72,32 +71,10 @@ def set_cookies(collection):
         </script>
     """, height=0)
 
-# --- IUCN Rarity Lookup with Genus Fallback ---
+# --- Temporarily disable IUCN lookup ---
 def get_iucn_status(species_name):
-    def fetch_status(query):
-        url = f"https://apiv3.iucnredlist.org/api/v3/species/{query}?token={IUCN_API_KEY}"
-        try:
-            response = requests.get(url)
-            st.text(f"IUCN Request: {url} → {response.status_code}")
-            if response.status_code == 200:
-                result = response.json()
-                st.text(f"IUCN Result for '{query}': {result}")
-                if result.get('result'):
-                    return result['result'][0]['category']
-        except Exception as e:
-            st.text(f"IUCN Error: {e}")
-        return None
+    return "Unknown"
 
-    species_query = species_name.replace(" ", "%20")
-    status = fetch_status(species_query)
-
-    if not status and " " in species_name:
-        genus_only = species_name.split()[0]
-        status = fetch_status(genus_only)
-
-    return status if status else "Unknown"
-
-# --- Rarity Labels ---
 RARITY_MAP = {
     "LC": "Common (🟢)",
     "NT": "Uncommon (🔵)",
@@ -154,7 +131,6 @@ if uploaded_file:
 
                 rarity_raw = get_iucn_status(species_name)
                 rarity = RARITY_MAP.get(rarity_raw, "???")
-                st.text(f"Raw IUCN Status: {rarity_raw}")
 
                 st.image(image_url, caption=species_name, width=300)
                 st.markdown(f"**Stats:** {stat_string}")
