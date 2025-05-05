@@ -1,32 +1,942 @@
 {
-  "agelena": {
-    "name": "Agelena",
-    "image": "agelena.png",
-    "stats": {
-      "attack": 7,
-      "defense": 5,
-      "speed": 8
+    "acanthosoma": {
+        "name": "Acanthosoma",
+        "image": "acanthosoma.png",
+        "stats": {
+            "attack": 5,
+            "defense": 5,
+            "speed": 9
+        },
+        "rarity": "Unknown"
     },
-    "rarity": "Common"
-  },
-  "agelena_labiata": {
-    "name": "Agelena Labiata",
-    "image": "agelena_labiata.png",
-    "stats": {
-      "attack": 9,
-      "defense": 6,
-      "speed": 7
+    "adalia": {
+        "name": "Adalia",
+        "image": "adalia.png",
+        "stats": {
+            "attack": 6,
+            "defense": 4,
+            "speed": 5
+        },
+        "rarity": "Unknown"
     },
-    "rarity": "Rare"
-  },
-  "bombus": {
-    "name": "Bombus",
-    "image": "bombus.png",
-    "stats": {
-      "attack": 6,
-      "defense": 8,
-      "speed": 5
+    "aedes": {
+        "name": "Aedes",
+        "image": "aedes.png",
+        "stats": {
+            "attack": 8,
+            "defense": 9,
+            "speed": 5
+        },
+        "rarity": "Unknown"
     },
-    "rarity": "Uncommon"
-  }
+    "agelena": {
+        "name": "Agelena",
+        "image": "agelena.png",
+        "stats": {
+            "attack": 8,
+            "defense": 5,
+            "speed": 8
+        },
+        "rarity": "Unknown"
+    },
+    "aglais": {
+        "name": "Aglais",
+        "image": "aglais.png",
+        "stats": {
+            "attack": 7,
+            "defense": 7,
+            "speed": 8
+        },
+        "rarity": "Unknown"
+    },
+    "agrilus_planipennis": {
+        "name": "Agrilus planipennis",
+        "image": "agrilus_planipennis.png",
+        "stats": {
+            "attack": 8,
+            "defense": 8,
+            "speed": 5
+        },
+        "rarity": "Unknown"
+    },
+    "agrilus": {
+        "name": "Agrilus",
+        "image": "agrilus.png",
+        "stats": {
+            "attack": 7,
+            "defense": 5,
+            "speed": 10
+        },
+        "rarity": "Unknown"
+    },
+    "agrotis": {
+        "name": "Agrotis",
+        "image": "agrotis.png",
+        "stats": {
+            "attack": 9,
+            "defense": 9,
+            "speed": 9
+        },
+        "rarity": "Unknown"
+    },
+    "aleyrhodes": {
+        "name": "Aleyrhodes",
+        "image": "aleyrhodes.png",
+        "stats": {
+            "attack": 8,
+            "defense": 5,
+            "speed": 8
+        },
+        "rarity": "Unknown"
+    },
+    "anax": {
+        "name": "Anax",
+        "image": "anax.png",
+        "stats": {
+            "attack": 9,
+            "defense": 4,
+            "speed": 6
+        },
+        "rarity": "Unknown"
+    },
+    "andrena": {
+        "name": "Andrena",
+        "image": "andrena.png",
+        "stats": {
+            "attack": 8,
+            "defense": 5,
+            "speed": 10
+        },
+        "rarity": "Unknown"
+    },
+    "anopheles": {
+        "name": "Anopheles",
+        "image": "anopheles.png",
+        "stats": {
+            "attack": 7,
+            "defense": 8,
+            "speed": 10
+        },
+        "rarity": "Unknown"
+    },
+    "aphidecta": {
+        "name": "Aphidecta",
+        "image": "aphidecta.png",
+        "stats": {
+            "attack": 5,
+            "defense": 4,
+            "speed": 10
+        },
+        "rarity": "Unknown"
+    },
+    "aphis": {
+        "name": "Aphis",
+        "image": "aphis.png",
+        "stats": {
+            "attack": 10,
+            "defense": 6,
+            "speed": 6
+        },
+        "rarity": "Unknown"
+    },
+    "apis_mellifera": {
+        "name": "Apis mellifera",
+        "image": "apis_mellifera.png",
+        "stats": {
+            "attack": 10,
+            "defense": 4,
+            "speed": 5
+        },
+        "rarity": "Unknown"
+    },
+    "araneus": {
+        "name": "Araneus",
+        "image": "araneus.png",
+        "stats": {
+            "attack": 10,
+            "defense": 4,
+            "speed": 10
+        },
+        "rarity": "Unknown"
+    },
+    "arctia": {
+        "name": "Arctia",
+        "image": "arctia.png",
+        "stats": {
+            "attack": 9,
+            "defense": 4,
+            "speed": 10
+        },
+        "rarity": "Unknown"
+    },
+    "bemisia": {
+        "name": "Bemisia",
+        "image": "bemisia.png",
+        "stats": {
+            "attack": 7,
+            "defense": 7,
+            "speed": 10
+        },
+        "rarity": "Unknown"
+    },
+    "blattella": {
+        "name": "Blattella",
+        "image": "blattella.png",
+        "stats": {
+            "attack": 5,
+            "defense": 9,
+            "speed": 10
+        },
+        "rarity": "Unknown"
+    },
+    "bombus": {
+        "name": "Bombus",
+        "image": "bombus.png",
+        "stats": {
+            "attack": 8,
+            "defense": 7,
+            "speed": 5
+        },
+        "rarity": "Unknown"
+    },
+    "brachycaudus": {
+        "name": "Brachycaudus",
+        "image": "brachycaudus.png",
+        "stats": {
+            "attack": 8,
+            "defense": 9,
+            "speed": 6
+        },
+        "rarity": "Unknown"
+    },
+    "brevicoryne": {
+        "name": "Brevicoryne",
+        "image": "brevicoryne.png",
+        "stats": {
+            "attack": 7,
+            "defense": 8,
+            "speed": 5
+        },
+        "rarity": "Unknown"
+    },
+    "calliphora": {
+        "name": "Calliphora",
+        "image": "calliphora.png",
+        "stats": {
+            "attack": 7,
+            "defense": 9,
+            "speed": 6
+        },
+        "rarity": "Unknown"
+    },
+    "calopteryx": {
+        "name": "Calopteryx",
+        "image": "calopteryx.png",
+        "stats": {
+            "attack": 7,
+            "defense": 5,
+            "speed": 8
+        },
+        "rarity": "Unknown"
+    },
+    "carabus": {
+        "name": "Carabus",
+        "image": "carabus.png",
+        "stats": {
+            "attack": 9,
+            "defense": 7,
+            "speed": 8
+        },
+        "rarity": "Unknown"
+    },
+    "chorthippus": {
+        "name": "Chorthippus",
+        "image": "chorthippus.png",
+        "stats": {
+            "attack": 10,
+            "defense": 7,
+            "speed": 5
+        },
+        "rarity": "Unknown"
+    },
+    "chrysoperla": {
+        "name": "Chrysoperla",
+        "image": "chrysoperla.png",
+        "stats": {
+            "attack": 9,
+            "defense": 8,
+            "speed": 9
+        },
+        "rarity": "Unknown"
+    },
+    "cicadella": {
+        "name": "Cicadella",
+        "image": "cicadella.png",
+        "stats": {
+            "attack": 7,
+            "defense": 6,
+            "speed": 10
+        },
+        "rarity": "Unknown"
+    },
+    "cicindela": {
+        "name": "Cicindela",
+        "image": "cicindela.png",
+        "stats": {
+            "attack": 5,
+            "defense": 4,
+            "speed": 8
+        },
+        "rarity": "Unknown"
+    },
+    "coccinella": {
+        "name": "Coccinella",
+        "image": "coccinella.png",
+        "stats": {
+            "attack": 6,
+            "defense": 8,
+            "speed": 9
+        },
+        "rarity": "Unknown"
+    },
+    "cornu": {
+        "name": "Cornu",
+        "image": "cornu.png",
+        "stats": {
+            "attack": 7,
+            "defense": 6,
+            "speed": 9
+        },
+        "rarity": "Unknown"
+    },
+    "ctenolepisma": {
+        "name": "Ctenolepisma",
+        "image": "ctenolepisma.png",
+        "stats": {
+            "attack": 8,
+            "defense": 9,
+            "speed": 6
+        },
+        "rarity": "Unknown"
+    },
+    "culex": {
+        "name": "Culex",
+        "image": "culex.png",
+        "stats": {
+            "attack": 7,
+            "defense": 6,
+            "speed": 9
+        },
+        "rarity": "Unknown"
+    },
+    "dolycoris": {
+        "name": "Dolycoris",
+        "image": "dolycoris.png",
+        "stats": {
+            "attack": 6,
+            "defense": 8,
+            "speed": 9
+        },
+        "rarity": "Unknown"
+    },
+    "episyrphus": {
+        "name": "Episyrphus",
+        "image": "episyrphus.png",
+        "stats": {
+            "attack": 8,
+            "defense": 5,
+            "speed": 9
+        },
+        "rarity": "Unknown"
+    },
+    "eristalis": {
+        "name": "Eristalis",
+        "image": "eristalis.png",
+        "stats": {
+            "attack": 8,
+            "defense": 4,
+            "speed": 10
+        },
+        "rarity": "Unknown"
+    },
+    "forficula": {
+        "name": "Forficula",
+        "image": "forficula.png",
+        "stats": {
+            "attack": 7,
+            "defense": 5,
+            "speed": 6
+        },
+        "rarity": "Unknown"
+    },
+    "gonepteryx": {
+        "name": "Gonepteryx",
+        "image": "gonepteryx.png",
+        "stats": {
+            "attack": 10,
+            "defense": 6,
+            "speed": 6
+        },
+        "rarity": "Unknown"
+    },
+    "graphosoma": {
+        "name": "Graphosoma",
+        "image": "graphosoma.png",
+        "stats": {
+            "attack": 9,
+            "defense": 4,
+            "speed": 6
+        },
+        "rarity": "Unknown"
+    },
+    "harmonia": {
+        "name": "Harmonia",
+        "image": "harmonia.png",
+        "stats": {
+            "attack": 8,
+            "defense": 9,
+            "speed": 10
+        },
+        "rarity": "Unknown"
+    },
+    "hemerobius": {
+        "name": "Hemerobius",
+        "image": "hemerobius.png",
+        "stats": {
+            "attack": 6,
+            "defense": 5,
+            "speed": 7
+        },
+        "rarity": "Unknown"
+    },
+    "hyles": {
+        "name": "Hyles",
+        "image": "hyles.png",
+        "stats": {
+            "attack": 7,
+            "defense": 8,
+            "speed": 5
+        },
+        "rarity": "Unknown"
+    },
+    "ischnura": {
+        "name": "Ischnura",
+        "image": "ischnura.png",
+        "stats": {
+            "attack": 5,
+            "defense": 8,
+            "speed": 8
+        },
+        "rarity": "Unknown"
+    },
+    "lasiommata": {
+        "name": "Lasiommata",
+        "image": "lasiommata.png",
+        "stats": {
+            "attack": 8,
+            "defense": 9,
+            "speed": 10
+        },
+        "rarity": "Unknown"
+    },
+    "lasius_niger": {
+        "name": "Lasius niger",
+        "image": "lasius_niger.png",
+        "stats": {
+            "attack": 6,
+            "defense": 4,
+            "speed": 10
+        },
+        "rarity": "Unknown"
+    },
+    "lepisma": {
+        "name": "Lepisma",
+        "image": "lepisma.png",
+        "stats": {
+            "attack": 6,
+            "defense": 4,
+            "speed": 5
+        },
+        "rarity": "Unknown"
+    },
+    "lestes": {
+        "name": "Lestes",
+        "image": "lestes.png",
+        "stats": {
+            "attack": 7,
+            "defense": 5,
+            "speed": 7
+        },
+        "rarity": "Unknown"
+    },
+    "libellula": {
+        "name": "Libellula",
+        "image": "libellula.png",
+        "stats": {
+            "attack": 6,
+            "defense": 4,
+            "speed": 10
+        },
+        "rarity": "Unknown"
+    },
+    "lucanus_cervus": {
+        "name": "Lucanus cervus",
+        "image": "lucanus_cervus.png",
+        "stats": {
+            "attack": 10,
+            "defense": 5,
+            "speed": 9
+        },
+        "rarity": "Unknown"
+    },
+    "lucanus": {
+        "name": "Lucanus",
+        "image": "lucanus.png",
+        "stats": {
+            "attack": 10,
+            "defense": 4,
+            "speed": 6
+        },
+        "rarity": "Unknown"
+    },
+    "lucilia": {
+        "name": "Lucilia",
+        "image": "lucilia.png",
+        "stats": {
+            "attack": 8,
+            "defense": 7,
+            "speed": 8
+        },
+        "rarity": "Unknown"
+    },
+    "lygus": {
+        "name": "Lygus",
+        "image": "lygus.png",
+        "stats": {
+            "attack": 7,
+            "defense": 8,
+            "speed": 10
+        },
+        "rarity": "Unknown"
+    },
+    "macrosiphum": {
+        "name": "Macrosiphum",
+        "image": "macrosiphum.png",
+        "stats": {
+            "attack": 5,
+            "defense": 4,
+            "speed": 10
+        },
+        "rarity": "Unknown"
+    },
+    "maniola": {
+        "name": "Maniola",
+        "image": "maniola.png",
+        "stats": {
+            "attack": 6,
+            "defense": 5,
+            "speed": 5
+        },
+        "rarity": "Unknown"
+    },
+    "meligethes": {
+        "name": "Meligethes",
+        "image": "meligethes.png",
+        "stats": {
+            "attack": 7,
+            "defense": 9,
+            "speed": 9
+        },
+        "rarity": "Unknown"
+    },
+    "meloe": {
+        "name": "Meloe",
+        "image": "meloe.png",
+        "stats": {
+            "attack": 7,
+            "defense": 8,
+            "speed": 6
+        },
+        "rarity": "Unknown"
+    },
+    "musca": {
+        "name": "Musca",
+        "image": "musca.png",
+        "stats": {
+            "attack": 7,
+            "defense": 6,
+            "speed": 5
+        },
+        "rarity": "Unknown"
+    },
+    "myzus": {
+        "name": "Myzus",
+        "image": "myzus.png",
+        "stats": {
+            "attack": 6,
+            "defense": 5,
+            "speed": 6
+        },
+        "rarity": "Unknown"
+    },
+    "nezara": {
+        "name": "Nezara",
+        "image": "nezara.png",
+        "stats": {
+            "attack": 9,
+            "defense": 6,
+            "speed": 9
+        },
+        "rarity": "Unknown"
+    },
+    "noctua": {
+        "name": "Noctua",
+        "image": "noctua.png",
+        "stats": {
+            "attack": 7,
+            "defense": 4,
+            "speed": 5
+        },
+        "rarity": "Unknown"
+    },
+    "omocestus": {
+        "name": "Omocestus",
+        "image": "omocestus.png",
+        "stats": {
+            "attack": 5,
+            "defense": 5,
+            "speed": 9
+        },
+        "rarity": "Unknown"
+    },
+    "oniscus": {
+        "name": "Oniscus",
+        "image": "oniscus.png",
+        "stats": {
+            "attack": 9,
+            "defense": 7,
+            "speed": 7
+        },
+        "rarity": "Unknown"
+    },
+    "otiorhynchus": {
+        "name": "Otiorhynchus",
+        "image": "otiorhynchus.png",
+        "stats": {
+            "attack": 10,
+            "defense": 9,
+            "speed": 10
+        },
+        "rarity": "Unknown"
+    },
+    "palomena": {
+        "name": "Palomena",
+        "image": "palomena.png",
+        "stats": {
+            "attack": 9,
+            "defense": 4,
+            "speed": 8
+        },
+        "rarity": "Unknown"
+    },
+    "papilio_machaon": {
+        "name": "Papilio machaon",
+        "image": "papilio_machaon.png",
+        "stats": {
+            "attack": 6,
+            "defense": 5,
+            "speed": 10
+        },
+        "rarity": "Unknown"
+    },
+    "pentatoma": {
+        "name": "Pentatoma",
+        "image": "pentatoma.png",
+        "stats": {
+            "attack": 8,
+            "defense": 6,
+            "speed": 9
+        },
+        "rarity": "Unknown"
+    },
+    "peribalus": {
+        "name": "Peribalus",
+        "image": "peribalus.png",
+        "stats": {
+            "attack": 5,
+            "defense": 6,
+            "speed": 9
+        },
+        "rarity": "Unknown"
+    },
+    "periplaneta": {
+        "name": "Periplaneta",
+        "image": "periplaneta.png",
+        "stats": {
+            "attack": 5,
+            "defense": 7,
+            "speed": 8
+        },
+        "rarity": "Unknown"
+    },
+    "phaedon": {
+        "name": "Phaedon",
+        "image": "phaedon.png",
+        "stats": {
+            "attack": 5,
+            "defense": 8,
+            "speed": 5
+        },
+        "rarity": "Unknown"
+    },
+    "philaenus": {
+        "name": "Philaenus",
+        "image": "philaenus.png",
+        "stats": {
+            "attack": 9,
+            "defense": 6,
+            "speed": 10
+        },
+        "rarity": "Unknown"
+    },
+    "philine": {
+        "name": "Philine",
+        "image": "philine.png",
+        "stats": {
+            "attack": 5,
+            "defense": 8,
+            "speed": 7
+        },
+        "rarity": "Unknown"
+    },
+    "pieris": {
+        "name": "Pieris",
+        "image": "pieris.png",
+        "stats": {
+            "attack": 5,
+            "defense": 9,
+            "speed": 6
+        },
+        "rarity": "Unknown"
+    },
+    "plutella": {
+        "name": "Plutella",
+        "image": "plutella.png",
+        "stats": {
+            "attack": 6,
+            "defense": 9,
+            "speed": 9
+        },
+        "rarity": "Unknown"
+    },
+    "polyommatus": {
+        "name": "Polyommatus",
+        "image": "polyommatus.png",
+        "stats": {
+            "attack": 5,
+            "defense": 5,
+            "speed": 6
+        },
+        "rarity": "Unknown"
+    },
+    "pseudochorthiippus": {
+        "name": "Pseudochorthiippus",
+        "image": "pseudochorthiippus.png",
+        "stats": {
+            "attack": 7,
+            "defense": 8,
+            "speed": 8
+        },
+        "rarity": "Unknown"
+    },
+    "pterostichus": {
+        "name": "Pterostichus",
+        "image": "pterostichus.png",
+        "stats": {
+            "attack": 9,
+            "defense": 5,
+            "speed": 6
+        },
+        "rarity": "Unknown"
+    },
+    "rhopalosiphum": {
+        "name": "Rhopalosiphum",
+        "image": "rhopalosiphum.png",
+        "stats": {
+            "attack": 8,
+            "defense": 6,
+            "speed": 8
+        },
+        "rarity": "Unknown"
+    },
+    "saperda_candida": {
+        "name": "Saperda candida",
+        "image": "saperda_candida.png",
+        "stats": {
+            "attack": 8,
+            "defense": 8,
+            "speed": 5
+        },
+        "rarity": "Unknown"
+    },
+    "saperda": {
+        "name": "Saperda",
+        "image": "saperda.png",
+        "stats": {
+            "attack": 9,
+            "defense": 7,
+            "speed": 7
+        },
+        "rarity": "Unknown"
+    },
+    "sciocoris": {
+        "name": "Sciocoris",
+        "image": "sciocoris.png",
+        "stats": {
+            "attack": 6,
+            "defense": 9,
+            "speed": 6
+        },
+        "rarity": "Unknown"
+    },
+    "sphex_pensylvanicus": {
+        "name": "Sphex pensylvanicus",
+        "image": "sphex_pensylvanicus.png",
+        "stats": {
+            "attack": 10,
+            "defense": 7,
+            "speed": 10
+        },
+        "rarity": "Unknown"
+    },
+    "spilosoma": {
+        "name": "Spilosoma",
+        "image": "spilosoma.png",
+        "stats": {
+            "attack": 9,
+            "defense": 4,
+            "speed": 7
+        },
+        "rarity": "Unknown"
+    },
+    "staphylinus": {
+        "name": "Staphylinus",
+        "image": "staphylinus.png",
+        "stats": {
+            "attack": 8,
+            "defense": 6,
+            "speed": 9
+        },
+        "rarity": "Unknown"
+    },
+    "sympetrum": {
+        "name": "Sympetrum",
+        "image": "sympetrum.png",
+        "stats": {
+            "attack": 7,
+            "defense": 9,
+            "speed": 5
+        },
+        "rarity": "Unknown"
+    },
+    "syrphus": {
+        "name": "Syrphus",
+        "image": "syrphus.png",
+        "stats": {
+            "attack": 7,
+            "defense": 5,
+            "speed": 7
+        },
+        "rarity": "Unknown"
+    },
+    "tegenaria": {
+        "name": "Tegenaria",
+        "image": "tegenaria.png",
+        "stats": {
+            "attack": 8,
+            "defense": 5,
+            "speed": 6
+        },
+        "rarity": "Unknown"
+    },
+    "tenebrio": {
+        "name": "Tenebrio",
+        "image": "tenebrio.png",
+        "stats": {
+            "attack": 7,
+            "defense": 5,
+            "speed": 10
+        },
+        "rarity": "Unknown"
+    },
+    "tineola_bisselliella": {
+        "name": "Tineola bisselliella",
+        "image": "tineola_bisselliella.png",
+        "stats": {
+            "attack": 7,
+            "defense": 9,
+            "speed": 10
+        },
+        "rarity": "Unknown"
+    },
+    "tineola": {
+        "name": "Tineola",
+        "image": "tineola.png",
+        "stats": {
+            "attack": 10,
+            "defense": 5,
+            "speed": 6
+        },
+        "rarity": "Unknown"
+    },
+    "tipula": {
+        "name": "Tipula",
+        "image": "tipula.png",
+        "stats": {
+            "attack": 5,
+            "defense": 4,
+            "speed": 8
+        },
+        "rarity": "Unknown"
+    },
+    "troilus": {
+        "name": "Troilus",
+        "image": "troilus.png",
+        "stats": {
+            "attack": 6,
+            "defense": 7,
+            "speed": 7
+        },
+        "rarity": "Unknown"
+    },
+    "vanessa": {
+        "name": "Vanessa",
+        "image": "vanessa.png",
+        "stats": {
+            "attack": 7,
+            "defense": 4,
+            "speed": 9
+        },
+        "rarity": "Unknown"
+    },
+    "vespula": {
+        "name": "Vespula",
+        "image": "vespula.png",
+        "stats": {
+            "attack": 5,
+            "defense": 4,
+            "speed": 5
+        },
+        "rarity": "Unknown"
+    },
+    "zygaena": {
+        "name": "Zygaena",
+        "image": "zygaena.png",
+        "stats": {
+            "attack": 5,
+            "defense": 8,
+            "speed": 9
+        },
+        "rarity": "Unknown"
+    }
 }
