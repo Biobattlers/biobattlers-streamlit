@@ -92,8 +92,6 @@ if 'kindwise_result' not in st.session_state:
     st.session_state.kindwise_result = None
 if 'last_uploaded_name' not in st.session_state:
     st.session_state.last_uploaded_name = None
-if 'selected_battler' not in st.session_state and st.session_state.collection:
-    st.session_state.selected_battler = st.session_state.collection[0]["name"]
 
 # --- Wild Battle Function ---
 def run_wild_battle():
@@ -102,7 +100,15 @@ def run_wild_battle():
         return
 
     creature_names = [c["name"] for c in st.session_state.collection]
-    selected_name = st.selectbox("Choose your battler:", creature_names, index=creature_names.index(st.session_state.selected_battler))
+
+    # Safely handle selected battler state
+    default_index = 0
+    if "selected_battler" in st.session_state and st.session_state.selected_battler in creature_names:
+        default_index = creature_names.index(st.session_state.selected_battler)
+    else:
+        st.session_state.selected_battler = creature_names[0]
+
+    selected_name = st.selectbox("Choose your battler:", creature_names, index=default_index)
     st.session_state.selected_battler = selected_name
 
     if st.button("🎮 Fight Wild Creature!"):
