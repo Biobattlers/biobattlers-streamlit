@@ -108,21 +108,27 @@ if uploaded_file:
                 genus = parts[0].lower()
                 species = parts[1].lower() if len(parts) > 1 else ""
                 creature_key = f"{genus}_{species}" if species else genus
+
+                # --- Try image for full name ---
                 image_filename = f"{creature_key}.png"
                 image_url = AWS_BUCKET_URL + image_filename
-
-                # Image fallback check
                 img_check = requests.get(image_url)
+
                 if img_check.status_code != 200:
+                    # Try genus image fallback
                     image_filename = f"{genus}.png"
                     image_url = AWS_BUCKET_URL + image_filename
                     img_check = requests.get(image_url)
 
                 if img_check.status_code != 200:
-                    image_url = "https://via.placeholder.com/300x200.png?text=Monster+Coming+Soon"
+                    # Final fallback: noclue image
+                    image_url = "https://biobattlers-images.s3.eu-north-1.amazonaws.com/noclue.png"
 
-                # --- Fetch Stats from JSON ---
+                # --- Fetch Stats with fallback ---
                 creature_data = CREATURE_STATS.get(creature_key)
+                if not creature_data:
+                    creature_data = CREATURE_STATS.get(genus)
+
                 if creature_data:
                     stats = creature_data["stats"]
                     stat_string = f"Attack: {stats['attack']} | Defense: {stats['defense']} | Speed: {stats['speed']}"
