@@ -75,17 +75,22 @@ def set_cookies(collection):
 # --- IUCN Rarity Lookup ---
 # --- IUCN Rarity Lookup with Genus Fallback ---
 def get_iucn_status(species_name):
-    def fetch_status(query):
-        url = f"https://apiv3.iucnredlist.org/api/v3/species/{query}?token={IUCN_API_KEY}"
-        try:
-            response = requests.get(url)
-            if response.status_code == 200:
-                result = response.json()
-                if result.get('result'):
-                    return result['result'][0]['category']
-        except:
-            pass
-        return None
+def fetch_status(query):
+    url = f"https://apiv3.iucnredlist.org/api/v3/species/{query}?token={IUCN_API_KEY}"
+    try:
+        response = requests.get(url)
+        st.text(f"IUCN Request: {url} → {response.status_code}")  # 🔍 Debug log
+
+        if response.status_code == 200:
+            result = response.json()
+            st.text(f"IUCN Result for '{query}': {result}")  # 🔍 Debug full output
+
+            if result.get('result'):
+                return result['result'][0]['category']
+    except Exception as e:
+        st.text(f"IUCN Error: {e}")  # 🔍 Debug any errors
+
+    return None
 
     # Try full species first
     species_query = species_name.replace(" ", "%20")
