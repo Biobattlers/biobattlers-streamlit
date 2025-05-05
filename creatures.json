@@ -1,0 +1,32 @@
+{
+  "agelena": {
+    "name": "Agelena",
+    "image": "agelena.png",
+    "stats": {
+      "attack": 7,
+      "defense": 5,
+      "speed": 8
+    },
+    "rarity": "Common"
+  },
+  "agelena_labiata": {
+    "name": "Agelena Labiata",
+    "image": "agelena_labiata.png",
+    "stats": {
+      "attack": 9,
+      "defense": 6,
+      "speed": 7
+    },
+    "rarity": "Rare"
+  },
+  "bombus": {
+    "name": "Bombus",
+    "image": "bombus.png",
+    "stats": {
+      "attack": 6,
+      "defense": 8,
+      "speed": 5
+    },
+    "rarity": "Uncommon"
+  }
+}
