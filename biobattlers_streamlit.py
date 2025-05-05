@@ -10,7 +10,7 @@ st.set_page_config(page_title="BioBattlers Prototype", layout="centered")
 # --- Sidebar Logo ---
 def add_sidebar_logo():
     st.markdown(
-        """
+        '''
         <style>
         section[data-testid="stSidebar"] {
             background-image: url("https://biobattlers-images.s3.eu-north-1.amazonaws.com/logo2.jpg");
@@ -20,7 +20,7 @@ def add_sidebar_logo():
             padding-top: 170px;
         }
         </style>
-        """,
+        ''',
         unsafe_allow_html=True
     )
 
@@ -28,11 +28,11 @@ add_sidebar_logo()
 
 # --- Main Logo ---
 st.markdown(
-    """
+    '''
     <div style='text-align: center; margin-top: 20px;'>
         <img src='https://biobattlers-images.s3.eu-north-1.amazonaws.com/Logo.png' width='220'/>
     </div>
-    """,
+    ''',
     unsafe_allow_html=True
 )
 
@@ -72,38 +72,32 @@ def set_cookies(collection):
         </script>
     """, height=0)
 
-# --- IUCN Rarity Lookup ---
 # --- IUCN Rarity Lookup with Genus Fallback ---
 def get_iucn_status(species_name):
-def fetch_status(query):
-    url = f"https://apiv3.iucnredlist.org/api/v3/species/{query}?token={IUCN_API_KEY}"
-    try:
-        response = requests.get(url)
-        st.text(f"IUCN Request: {url} → {response.status_code}")  # 🔍 Debug log
+    def fetch_status(query):
+        url = f"https://apiv3.iucnredlist.org/api/v3/species/{query}?token={IUCN_API_KEY}"
+        try:
+            response = requests.get(url)
+            st.text(f"IUCN Request: {url} → {response.status_code}")
+            if response.status_code == 200:
+                result = response.json()
+                st.text(f"IUCN Result for '{query}': {result}")
+                if result.get('result'):
+                    return result['result'][0]['category']
+        except Exception as e:
+            st.text(f"IUCN Error: {e}")
+        return None
 
-        if response.status_code == 200:
-            result = response.json()
-            st.text(f"IUCN Result for '{query}': {result}")  # 🔍 Debug full output
-
-            if result.get('result'):
-                return result['result'][0]['category']
-    except Exception as e:
-        st.text(f"IUCN Error: {e}")  # 🔍 Debug any errors
-
-    return None
-
-    # Try full species first
     species_query = species_name.replace(" ", "%20")
     status = fetch_status(species_query)
 
-    # Fallback to genus only
     if not status and " " in species_name:
         genus_only = species_name.split()[0]
         status = fetch_status(genus_only)
 
     return status if status else "Unknown"
 
-
+# --- Rarity Labels ---
 RARITY_MAP = {
     "LC": "Common (🟢)",
     "NT": "Uncommon (🔵)",
@@ -160,6 +154,7 @@ if uploaded_file:
 
                 rarity_raw = get_iucn_status(species_name)
                 rarity = RARITY_MAP.get(rarity_raw, "???")
+                st.text(f"Raw IUCN Status: {rarity_raw}")
 
                 st.image(image_url, caption=species_name, width=300)
                 st.markdown(f"**Stats:** {stat_string}")
