@@ -93,6 +93,42 @@ if 'kindwise_result' not in st.session_state:
 if 'last_uploaded_name' not in st.session_state:
     st.session_state.last_uploaded_name = None
 
+# --- Battle Logic (define BEFORE using it!) ---
+def run_battle(stat_string):
+    if not st.session_state.collection or len(st.session_state.collection) < 2:
+        st.warning("📦 You need at least 2 creatures in your collection to battle!")
+        return
+
+    creature_names = [c["name"] for c in st.session_state.collection]
+    selected_name = st.selectbox("Choose your battler:", creature_names)
+
+    player_creature = next(c for c in st.session_state.collection if c["name"] == selected_name)
+    opponent_choices = [c for c in st.session_state.collection if c["name"] != selected_name]
+    opponent = random.choice(opponent_choices)
+
+    def parse_stats(stats_str):
+        try:
+            parts = stats_str.split("|")
+            return sum([int(part.strip().split(":")[1]) for part in parts])
+        except:
+            return 0
+
+    player_score = parse_stats(player_creature["stats"])
+    opponent_score = parse_stats(opponent["stats"])
+
+    st.markdown("## ⚔️ Battle Commences!")
+    st.image(player_creature["imageUrl"], width=150, caption=f"🧬 {player_creature['name']}")
+    st.image(opponent["imageUrl"], width=150, caption=f"🆚 {opponent['name']}")
+    st.markdown(f"**Your Power:** {player_score}  |  **Opponent Power:** {opponent_score}")
+
+    if player_score > opponent_score:
+        player_creature["wins"] = player_creature.get("wins", 0) + 1
+        st.success(f"🎉 Victory! {player_creature['name']} now has {player_creature['wins']} win(s)!")
+    elif player_score < opponent_score:
+        st.error("💀 Defeat! Your opponent overpowered you.")
+    else:
+        st.info("🤝 It's a draw. An evenly matched duel.")
+
 # --- Upload + Scan ---
 st.markdown("### 📸 Upload an insect photo to scan:")
 uploaded_file = st.file_uploader("", type=["jpg", "jpeg", "png"])
@@ -164,7 +200,8 @@ if uploaded_file:
                     "name": species_name,
                     "imageUrl": image_url,
                     "stats": stat_string,
-                    "rarity": rarity
+                    "rarity": rarity,
+                    "wins": 0
                 })
                 set_cookies(st.session_state.collection)
                 st.success(f"{species_name} added to your collection!")
@@ -183,41 +220,8 @@ if st.session_state.collection:
         st.image(creature["imageUrl"], width=150, caption=creature["name"])
         st.text(creature["stats"])
         st.text(f"Rarity: {creature.get('rarity', '???')}")
-
-# --- Battle Logic Function ---
-def run_battle(stat_string):
-    if not st.session_state.collection or len(st.session_state.collection) < 2:
-        st.warning("📦 You need at least 2 creatures in your collection to battle!")
-        return
-
-    creature_names = [c["name"] for c in st.session_state.collection]
-    selected_name = st.selectbox("Choose your battler:", creature_names)
-
-    player_creature = next(c for c in st.session_state.collection if c["name"] == selected_name)
-    opponent_choices = [c for c in st.session_state.collection if c["name"] != selected_name]
-    opponent = random.choice(opponent_choices)
-
-    def parse_stats(stats_str):
-        try:
-            parts = stats_str.split("|")
-            return sum([int(part.strip().split(":")[1]) for part in parts])
-        except:
-            return 0
-
-    player_score = parse_stats(player_creature["stats"])
-    opponent_score = parse_stats(opponent["stats"])
-
-    st.markdown("## ⚔️ Battle Commences!")
-    st.image(player_creature["imageUrl"], width=150, caption=f"🧬 {player_creature['name']}")
-    st.image(opponent["imageUrl"], width=150, caption=f"🆚 {opponent['name']}")
-    st.markdown(f"**Your Power:** {player_score}  |  **Opponent Power:** {opponent_score}")
-
-    if player_score > opponent_score:
-        st.success("🎉 Victory! You defeated your opponent.")
-    elif player_score < opponent_score:
-        st.error("💀 Defeat! Your opponent overpowered you.")
-    else:
-        st.info("🤝 It's a draw. An evenly matched duel.")
+        if "wins" in creature:
+            st.text(f"🏅 Wins: {creature['wins']}")
 
 # --- Footer ---
 st.markdown("""
