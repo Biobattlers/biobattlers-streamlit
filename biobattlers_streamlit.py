@@ -71,7 +71,7 @@ def set_cookies(collection):
         </script>
     """, height=0)
 
-# --- Temporarily disable IUCN lookup ---
+# --- IUCN disabled for now ---
 def get_iucn_status(species_name):
     return "Unknown"
 
@@ -107,24 +107,27 @@ if uploaded_file:
                 parts = species_name.split()
                 genus = parts[0].lower()
                 species = parts[1].lower() if len(parts) > 1 else ""
-                creature_key = f"{genus}_{species}" if species else genus
+                creature_key = f"{genus}_{species}".strip("_") if species else genus
 
-                # --- Try image for full name ---
-                image_filename = f"{creature_key}.png"
-                image_url = AWS_BUCKET_URL + image_filename
-                img_check = requests.get(image_url)
+                # --- Image fallback logic ---
+                image_variants = []
+                if species:
+                    image_variants.append(f"{genus}_{species}.png")
+                    image_variants.append(f"{genus}+{species}.png")
+                image_variants.append(f"{genus}.png")
 
-                if img_check.status_code != 200:
-                    # Try genus image fallback
-                    image_filename = f"{genus}.png"
-                    image_url = AWS_BUCKET_URL + image_filename
-                    img_check = requests.get(image_url)
+                image_url = None
+                for filename in image_variants:
+                    candidate_url = AWS_BUCKET_URL + filename
+                    img_check = requests.get(candidate_url)
+                    if img_check.status_code == 200:
+                        image_url = candidate_url
+                        break
 
-                if img_check.status_code != 200:
-                    # Final fallback: noclue image
+                if not image_url:
                     image_url = "https://biobattlers-images.s3.eu-north-1.amazonaws.com/noclue.png"
 
-                # --- Fetch Stats with fallback ---
+                # --- Stats fallback logic ---
                 creature_data = CREATURE_STATS.get(creature_key)
                 if not creature_data:
                     creature_data = CREATURE_STATS.get(genus)
