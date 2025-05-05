@@ -92,65 +92,14 @@ if 'kindwise_result' not in st.session_state:
     st.session_state.kindwise_result = None
 if 'last_uploaded_name' not in st.session_state:
     st.session_state.last_uploaded_name = None
+if 'selected_battler' not in st.session_state and st.session_state.collection:
+    st.session_state.selected_battler = st.session_state.collection[0]["name"]
 
-# --- Battle vs Wild Creature ---
+# --- Wild Battle Function ---
 def run_wild_battle():
     if not st.session_state.collection:
         st.warning("📦 You need at least one creature in your collection to battle!")
         return
-
-    creature_names = [c["name"] for c in st.session_state.collection]
-    selected_name = st.selectbox("Choose your battler:", creature_names)
-
-    player_creature = next(c for c in st.session_state.collection if c["name"] == selected_name)
-
-    wild_key = random.choice(list(CREATURE_STATS.keys()))
-    wild_stats = CREATURE_STATS[wild_key]["stats"]
-    wild_image = AWS_BUCKET_URL + f"{wild_key}.png"
-
-    def parse_stats(stats_str):
-        try:
-            parts = stats_str.split("|")
-            return sum([int(part.strip().split(":")[1]) for part in parts])
-        except:
-            return 0
-
-    player_score = parse_stats(player_creature["stats"])
-    wild_score = parse_stats(f"Attack: {wild_stats['attack']} | Defense: {wild_stats['defense']} | Speed: {wild_stats['speed']}")
-
-    st.markdown("## ⚔️ Wild Battle Begins!")
-    st.image(player_creature["imageUrl"], width=150, caption=f"🧬 {player_creature['name']}")
-    st.image(wild_image, width=150, caption=f"🌿 Wild {wild_key.title().replace('_', ' ')}")
-    st.markdown(f"**Your Power:** {player_score}  |  **Wild Power:** {wild_score}")
-
-    if player_score > wild_score:
-        player_creature["wins"] = player_creature.get("wins", 0) + 1
-        st.success(f"🎉 You won! {player_creature['name']} now has {player_creature['wins']} win(s)!")
-    elif player_score < wild_score:
-        st.error("💀 Defeat! The wild creature overpowered you.")
-    else:
-        st.info("🤝 It's a draw. The wild creature retreats... for now.")
-
-# --- Upload + Scan ---
-st.markdown("### 📸 Upload an insect photo to scan:")
-uploaded_file = st.file_uploader("", type=["jpg", "jpeg", "png"])
-
-if uploaded_file:
-    with st.spinner("🔎 Scanning new Biobattler..."):
-
-        if uploaded_file.name != st.session_state.last_uploaded_name:
-            headers = {
-                "Api-Key": KINDWISE_API_KEY,
-                "Accept": "application/json"
-            }
-            response = requests.post(KINDWISE_API_URL, headers=headers, files={"images": uploaded_file})
-def run_wild_battle():
-    if not st.session_state.collection:
-        st.warning("📦 You need at least one creature in your collection to battle!")
-        return
-
-    if "selected_battler" not in st.session_state:
-        st.session_state.selected_battler = st.session_state.collection[0]["name"]
 
     creature_names = [c["name"] for c in st.session_state.collection]
     selected_name = st.selectbox("Choose your battler:", creature_names, index=creature_names.index(st.session_state.selected_battler))
@@ -186,6 +135,76 @@ def run_wild_battle():
         else:
             st.info("🤝 It's a draw. The wild creature retreats... for now.")
 
+# --- Upload + Scan ---
+st.markdown("### 📸 Upload an insect photo to scan:")
+uploaded_file = st.file_uploader("", type=["jpg", "jpeg", "png"])
+
+if uploaded_file:
+    with st.spinner("🔎 Scanning new Biobattler..."):
+
+        if uploaded_file.name != st.session_state.last_uploaded_name:
+            headers = {
+                "Api-Key": KINDWISE_API_KEY,
+                "Accept": "application/json"
+            }
+            response = requests.post(KINDWISE_API_URL, headers=headers, files={"images": uploaded_file})
+            if response.status_code == 201:
+                st.session_state.kindwise_result = response.json()
+                st.session_state.last_uploaded_name = uploaded_file.name
+            else:
+                st.error("❌ Error contacting Kindwise API. Try again later.")
+                st.stop()
+
+        data = st.session_state.kindwise_result
+
+        try:
+            species_name = data["result"]["classification"]["suggestions"][0]["name"]
+            parts = species_name.split()
+            genus = parts[0].lower()
+            species = parts[1].lower() if len(parts) > 1 else ""
+            creature_key = f"{genus}_{species}".strip("_") if species else genus
+
+            image_variants = []
+            if species:
+                image_variants.append(f"{genus}_{species}.png")
+                image_variants.append(f"{genus}+{species}.png")
+            image_variants.append(f"{genus}.png")
+
+            image_url = None
+            for filename in image_variants:
+                candidate_url = AWS_BUCKET_URL + filename
+                img_check = requests.get(candidate_url)
+                if img_check.status_code == 200:
+                    image_url = candidate_url
+                    break
+
+            if not image_url:
+                image_url = "https://biobattlers-images.s3.eu-north-1.amazonaws.com/noclue.png"
+
+            creature_data = CREATURE_STATS.get(creature_key)
+            if not creature_data:
+                creature_data = CREATURE_STATS.get(genus)
+
+            if creature_data:
+                stats = creature_data["stats"]
+                stat_string = f"Attack: {stats['attack']} | Defense: {stats['defense']} | Speed: {stats['speed']}"
+            else:
+                stat_string = "Attack: ??? | Defense: ??? | Speed: ???"
+
+            rarity_raw = get_iucn_status(species_name)
+            rarity = RARITY_MAP.get(rarity_raw, "???")
+
+            st.image(image_url, caption=species_name, width=300)
+            st.markdown(f"**Stats:** {stat_string}")
+            st.markdown(f"**Rarity:** {rarity}")
+
+            if st.button("🎯 Capture This Creature"):
+                st.session_state.collection.append({
+                    "name": species_name,
+                    "imageUrl": image_url,
+                    "stats": stat_string,
+                    "rarity": rarity,
+                    "wins": 0
                 })
                 set_cookies(st.session_state.collection)
                 st.success(f"{species_name} added to your collection!")
@@ -204,8 +223,7 @@ if st.session_state.collection:
             st.text(f"🏅 Wins: {creature['wins']}")
 
     st.markdown("### 🧪 Ready to Battle?")
-    if st.button("⚔️ Battle a Random Wild Creature"):
-        run_wild_battle()
+    run_wild_battle()
 
 # --- Footer ---
 st.markdown("""
