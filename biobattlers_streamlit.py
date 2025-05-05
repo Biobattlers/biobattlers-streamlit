@@ -93,18 +93,20 @@ if 'kindwise_result' not in st.session_state:
 if 'last_uploaded_name' not in st.session_state:
     st.session_state.last_uploaded_name = None
 
-# --- Battle Logic (define BEFORE using it!) ---
-def run_battle(stat_string):
-    if not st.session_state.collection or len(st.session_state.collection) < 2:
-        st.warning("📦 You need at least 2 creatures in your collection to battle!")
+# --- Battle vs Wild Creature ---
+def run_wild_battle():
+    if not st.session_state.collection:
+        st.warning("📦 You need at least one creature in your collection to battle!")
         return
 
     creature_names = [c["name"] for c in st.session_state.collection]
     selected_name = st.selectbox("Choose your battler:", creature_names)
 
     player_creature = next(c for c in st.session_state.collection if c["name"] == selected_name)
-    opponent_choices = [c for c in st.session_state.collection if c["name"] != selected_name]
-    opponent = random.choice(opponent_choices)
+
+    wild_key = random.choice(list(CREATURE_STATS.keys()))
+    wild_stats = CREATURE_STATS[wild_key]["stats"]
+    wild_image = AWS_BUCKET_URL + f"{wild_key}.png"
 
     def parse_stats(stats_str):
         try:
@@ -114,20 +116,20 @@ def run_battle(stat_string):
             return 0
 
     player_score = parse_stats(player_creature["stats"])
-    opponent_score = parse_stats(opponent["stats"])
+    wild_score = parse_stats(f"Attack: {wild_stats['attack']} | Defense: {wild_stats['defense']} | Speed: {wild_stats['speed']}")
 
-    st.markdown("## ⚔️ Battle Commences!")
+    st.markdown("## ⚔️ Wild Battle Begins!")
     st.image(player_creature["imageUrl"], width=150, caption=f"🧬 {player_creature['name']}")
-    st.image(opponent["imageUrl"], width=150, caption=f"🆚 {opponent['name']}")
-    st.markdown(f"**Your Power:** {player_score}  |  **Opponent Power:** {opponent_score}")
+    st.image(wild_image, width=150, caption=f"🌿 Wild {wild_key.title().replace('_', ' ')}")
+    st.markdown(f"**Your Power:** {player_score}  |  **Wild Power:** {wild_score}")
 
-    if player_score > opponent_score:
+    if player_score > wild_score:
         player_creature["wins"] = player_creature.get("wins", 0) + 1
-        st.success(f"🎉 Victory! {player_creature['name']} now has {player_creature['wins']} win(s)!")
-    elif player_score < opponent_score:
-        st.error("💀 Defeat! Your opponent overpowered you.")
+        st.success(f"🎉 You won! {player_creature['name']} now has {player_creature['wins']} win(s)!")
+    elif player_score < wild_score:
+        st.error("💀 Defeat! The wild creature overpowered you.")
     else:
-        st.info("🤝 It's a draw. An evenly matched duel.")
+        st.info("🤝 It's a draw. The wild creature retreats... for now.")
 
 # --- Upload + Scan ---
 st.markdown("### 📸 Upload an insect photo to scan:")
@@ -136,7 +138,6 @@ uploaded_file = st.file_uploader("", type=["jpg", "jpeg", "png"])
 if uploaded_file:
     with st.spinner("🔎 Scanning new Biobattler..."):
 
-        # --- Only scan if it's a new image ---
         if uploaded_file.name != st.session_state.last_uploaded_name:
             headers = {
                 "Api-Key": KINDWISE_API_KEY,
@@ -159,7 +160,6 @@ if uploaded_file:
             species = parts[1].lower() if len(parts) > 1 else ""
             creature_key = f"{genus}_{species}".strip("_") if species else genus
 
-            # --- Image fallback logic ---
             image_variants = []
             if species:
                 image_variants.append(f"{genus}_{species}.png")
@@ -177,7 +177,6 @@ if uploaded_file:
             if not image_url:
                 image_url = "https://biobattlers-images.s3.eu-north-1.amazonaws.com/noclue.png"
 
-            # --- Stats fallback logic ---
             creature_data = CREATURE_STATS.get(creature_key)
             if not creature_data:
                 creature_data = CREATURE_STATS.get(genus)
@@ -206,10 +205,6 @@ if uploaded_file:
                 set_cookies(st.session_state.collection)
                 st.success(f"{species_name} added to your collection!")
 
-            if len(st.session_state.collection) >= 2:
-                if st.button("🛡️ Battle With a Creature From Your Collection"):
-                    run_battle(stat_string)
-
         except (KeyError, IndexError):
             st.error("❌ Couldn't identify the species properly. Try again.")
 
@@ -222,6 +217,10 @@ if st.session_state.collection:
         st.text(f"Rarity: {creature.get('rarity', '???')}")
         if "wins" in creature:
             st.text(f"🏅 Wins: {creature['wins']}")
+
+    st.markdown("### 🧪 Ready to Battle?")
+    if st.button("⚔️ Battle a Random Wild Creature"):
+        run_wild_battle()
 
 # --- Footer ---
 st.markdown("""
