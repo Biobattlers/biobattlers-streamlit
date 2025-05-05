@@ -75,7 +75,7 @@ def set_cookies(collection):
 # --- IUCN Rarity Lookup ---
 def get_iucn_status(species_name):
     query = species_name.replace(" ", "%20")
-    url = f"https://apiv3.iucnredlist.org/api/v3/species/{query}?token={58FVzKxRbn6x3vJXdYuCw9YqL6PeFJ1xdi17}"
+    url = f"https://apiv3.iucnredlist.org/api/v3/species/{query}?token={IUCN_API_KEY}"
     try:
         response = requests.get(url)
         if response.status_code == 200:
