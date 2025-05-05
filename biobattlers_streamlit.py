@@ -97,7 +97,7 @@ st.markdown("### 📸 Upload an insect photo to scan:")
 uploaded_file = st.file_uploader("", type=["jpg", "jpeg", "png"])
 
 if uploaded_file:
-    with st.spinner("🔎 Scanning with Kindwise..."):
+    with st.spinner("🔎 Scanning for new Biobattlers..."):
         headers = {
             "Api-Key": KINDWISE_API_KEY,
             "Accept": "application/json"
