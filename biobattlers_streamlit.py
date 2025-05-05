@@ -40,6 +40,14 @@ st.markdown(
 st.markdown("<h1 style='text-align: center; color: #1f4e79;'>🪲 BioBattlers: Scan • Capture • Collect 🐝</h1>", unsafe_allow_html=True)
 st.markdown("<p style='text-align: center; font-size: 1.1em;'>Created by Jack Llewellyn – BioBattlers Ltd. All rights reserved (C) 2025</p>", unsafe_allow_html=True)
 
+# --- Load Creature Stats from JSON ---
+try:
+    with open("creatures.json", "r") as f:
+        CREATURE_STATS = json.load(f)
+except FileNotFoundError:
+    CREATURE_STATS = {}
+    st.error("⚠️ creatures.json not found. Creatures will have default stats.")
+
 # --- API Keys & URLs ---
 KINDWISE_API_KEY = st.secrets["KINDWISE_API_KEY"]
 IUCN_API_KEY = st.secrets["IUCN_API_KEY"]
@@ -78,7 +86,6 @@ def get_iucn_status(species_name):
         pass
     return "Unknown"
 
-# --- Rarity Mapping ---
 RARITY_MAP = {
     "LC": "Common (🟢)",
     "NT": "Uncommon (🔵)",
@@ -97,7 +104,7 @@ st.markdown("### 📸 Upload an insect photo to scan:")
 uploaded_file = st.file_uploader("", type=["jpg", "jpeg", "png"])
 
 if uploaded_file:
-    with st.spinner("🔎 Scanning for new Biobattlers..."):
+    with st.spinner("🔎 Scanning with Kindwise..."):
         headers = {
             "Api-Key": KINDWISE_API_KEY,
             "Accept": "application/json"
@@ -111,33 +118,40 @@ if uploaded_file:
                 parts = species_name.split()
                 genus = parts[0].lower()
                 species = parts[1].lower() if len(parts) > 1 else ""
-                filename = f"{genus}_{species}.png"
-                image_url = AWS_BUCKET_URL + filename
+                creature_key = f"{genus}_{species}" if species else genus
+                image_filename = f"{creature_key}.png"
+                image_url = AWS_BUCKET_URL + image_filename
 
+                # Image fallback check
                 img_check = requests.get(image_url)
                 if img_check.status_code != 200:
-                    filename = f"{genus}.png"
-                    image_url = AWS_BUCKET_URL + filename
+                    image_filename = f"{genus}.png"
+                    image_url = AWS_BUCKET_URL + image_filename
                     img_check = requests.get(image_url)
 
                 if img_check.status_code != 200:
                     image_url = "https://via.placeholder.com/300x200.png?text=Monster+Coming+Soon"
-                    stats = "???"
+
+                # --- Fetch Stats from JSON ---
+                creature_data = CREATURE_STATS.get(creature_key)
+                if creature_data:
+                    stats = creature_data["stats"]
+                    stat_string = f"Attack: {stats['attack']} | Defense: {stats['defense']} | Speed: {stats['speed']}"
                 else:
-                    stats = "Attack: 10 | Defense: 8 | Speed: 7"
+                    stat_string = "Attack: ??? | Defense: ??? | Speed: ???"
 
                 rarity_raw = get_iucn_status(species_name)
                 rarity = RARITY_MAP.get(rarity_raw, "???")
 
                 st.image(image_url, caption=species_name, width=300)
-                st.markdown(f"**Stats:** {stats}")
+                st.markdown(f"**Stats:** {stat_string}")
                 st.markdown(f"**Rarity:** {rarity}")
 
                 if st.button("🎯 Capture This Creature"):
                     st.session_state.collection.append({
                         "name": species_name,
                         "imageUrl": image_url,
-                        "stats": stats,
+                        "stats": stat_string,
                         "rarity": rarity
                     })
                     set_cookies(st.session_state.collection)
