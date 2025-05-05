@@ -3,6 +3,7 @@ import os
 import requests
 import streamlit.components.v1 as components
 import json
+import random
 
 # --- Page Configuration ---
 st.set_page_config(page_title="BioBattlers Prototype", layout="centered")
@@ -71,7 +72,7 @@ def set_cookies(collection):
         </script>
     """, height=0)
 
-# --- IUCN disabled for now ---
+# --- IUCN disabled ---
 def get_iucn_status(species_name):
     return "Unknown"
 
@@ -84,9 +85,12 @@ RARITY_MAP = {
     "Unknown": "???"
 }
 
-# --- Collection Init ---
+# --- Session state init ---
 if 'collection' not in st.session_state:
     st.session_state.collection = get_cookies()
+
+if 'kindwise_result' not in st.session_state:
+    st.session_state.kindwise_result = None
 
 # --- Upload + Scan ---
 st.markdown("### 📸 Upload an insect photo to scan:")
@@ -94,71 +98,77 @@ uploaded_file = st.file_uploader("", type=["jpg", "jpeg", "png"])
 
 if uploaded_file:
     with st.spinner("🔎 Scanning new Biobattler..."):
-        headers = {
-            "Api-Key": KINDWISE_API_KEY,
-            "Accept": "application/json"
-        }
-        response = requests.post(KINDWISE_API_URL, headers=headers, files={"images": uploaded_file})
 
-        if response.status_code == 201:
-            data = response.json()
-            try:
-                species_name = data["result"]["classification"]["suggestions"][0]["name"]
-                parts = species_name.split()
-                genus = parts[0].lower()
-                species = parts[1].lower() if len(parts) > 1 else ""
-                creature_key = f"{genus}_{species}".strip("_") if species else genus
+        # --- Only call Kindwise if not already cached ---
+        if st.session_state.kindwise_result is None:
+            headers = {
+                "Api-Key": KINDWISE_API_KEY,
+                "Accept": "application/json"
+            }
+            response = requests.post(KINDWISE_API_URL, headers=headers, files={"images": uploaded_file})
+            if response.status_code == 201:
+                st.session_state.kindwise_result = response.json()
+            else:
+                st.error("❌ Error contacting Kindwise API. Try again later.")
+                st.stop()
 
-                # --- Image fallback logic ---
-                image_variants = []
-                if species:
-                    image_variants.append(f"{genus}_{species}.png")
-                    image_variants.append(f"{genus}+{species}.png")
-                image_variants.append(f"{genus}.png")
+        data = st.session_state.kindwise_result
 
-                image_url = None
-                for filename in image_variants:
-                    candidate_url = AWS_BUCKET_URL + filename
-                    img_check = requests.get(candidate_url)
-                    if img_check.status_code == 200:
-                        image_url = candidate_url
-                        break
+        try:
+            species_name = data["result"]["classification"]["suggestions"][0]["name"]
+            parts = species_name.split()
+            genus = parts[0].lower()
+            species = parts[1].lower() if len(parts) > 1 else ""
+            creature_key = f"{genus}_{species}".strip("_") if species else genus
 
-                if not image_url:
-                    image_url = "https://biobattlers-images.s3.eu-north-1.amazonaws.com/noclue.png"
+            # --- Image fallback logic ---
+            image_variants = []
+            if species:
+                image_variants.append(f"{genus}_{species}.png")
+                image_variants.append(f"{genus}+{species}.png")
+            image_variants.append(f"{genus}.png")
 
-                # --- Stats fallback logic ---
-                creature_data = CREATURE_STATS.get(creature_key)
-                if not creature_data:
-                    creature_data = CREATURE_STATS.get(genus)
+            image_url = None
+            for filename in image_variants:
+                candidate_url = AWS_BUCKET_URL + filename
+                img_check = requests.get(candidate_url)
+                if img_check.status_code == 200:
+                    image_url = candidate_url
+                    break
 
-                if creature_data:
-                    stats = creature_data["stats"]
-                    stat_string = f"Attack: {stats['attack']} | Defense: {stats['defense']} | Speed: {stats['speed']}"
-                else:
-                    stat_string = "Attack: ??? | Defense: ??? | Speed: ???"
+            if not image_url:
+                image_url = "https://biobattlers-images.s3.eu-north-1.amazonaws.com/noclue.png"
 
-                rarity_raw = get_iucn_status(species_name)
-                rarity = RARITY_MAP.get(rarity_raw, "???")
+            # --- Stats fallback logic ---
+            creature_data = CREATURE_STATS.get(creature_key)
+            if not creature_data:
+                creature_data = CREATURE_STATS.get(genus)
 
-                st.image(image_url, caption=species_name, width=300)
-                st.markdown(f"**Stats:** {stat_string}")
-                st.markdown(f"**Rarity:** {rarity}")
+            if creature_data:
+                stats = creature_data["stats"]
+                stat_string = f"Attack: {stats['attack']} | Defense: {stats['defense']} | Speed: {stats['speed']}"
+            else:
+                stat_string = "Attack: ??? | Defense: ??? | Speed: ???"
 
-                if st.button("🎯 Capture This Creature"):
-                    st.session_state.collection.append({
-                        "name": species_name,
-                        "imageUrl": image_url,
-                        "stats": stat_string,
-                        "rarity": rarity
-                    })
-                    set_cookies(st.session_state.collection)
-                    st.success(f"{species_name} added to your collection!")
+            rarity_raw = get_iucn_status(species_name)
+            rarity = RARITY_MAP.get(rarity_raw, "???")
 
-            except (KeyError, IndexError):
-                st.error("❌ Couldn't identify the species properly. Try again.")
-        else:
-            st.error("❌ Error contacting Kindwise API. Try again later.")
+            st.image(image_url, caption=species_name, width=300)
+            st.markdown(f"**Stats:** {stat_string}")
+            st.markdown(f"**Rarity:** {rarity}")
+
+            if st.button("🎯 Capture This Creature"):
+                st.session_state.collection.append({
+                    "name": species_name,
+                    "imageUrl": image_url,
+                    "stats": stat_string,
+                    "rarity": rarity
+                })
+                set_cookies(st.session_state.collection)
+                st.success(f"{species_name} added to your collection!")
+
+        except (KeyError, IndexError):
+            st.error("❌ Couldn't identify the species properly. Try again.")
 
 # --- Show Collection ---
 if st.session_state.collection:
