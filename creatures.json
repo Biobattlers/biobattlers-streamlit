@@ -9,6 +9,1116 @@
     },
     "rarity": "Unknown"
   },
+  "epiphyas": {
+    "name": "Epiphyas",
+    "image": "epiphyas.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "steatoda": {
+    "name": "Steatoda",
+    "image": "steatoda.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "myathropa": {
+    "name": "Myathropa",
+    "image": "myathropa.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "deilephila": {
+    "name": "Deilephila",
+    "image": "deilephila.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "apamea": {
+    "name": "Apamea",
+    "image": "apamea.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "coreus": {
+    "name": "Coreus",
+    "image": "coreus.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "lycaena": {
+    "name": "Lycaena",
+    "image": "lycaena.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "opisthograptis": {
+    "name": "Opisthograptis",
+    "image": "opisthograptis.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "pyrrhosoma": {
+    "name": "Pyrrhosoma",
+    "image": "pyrrhosoma.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "coenagrion": {
+    "name": "Coenagrion",
+    "image": "coenagrion.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "phlogophora": {
+    "name": "Phlogophora",
+    "image": "phlogophora.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "cydalima": {
+    "name": "Cydalima",
+    "image": "cydalima.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "euplagia": {
+    "name": "Euplagia",
+    "image": "euplagia.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "pyrausta": {
+    "name": "Pyrausta",
+    "image": "pyrausta.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "bombylius": {
+    "name": "Bombylius",
+    "image": "bombylius.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "scathophaga": {
+    "name": "Scathophaga",
+    "image": "scathophaga.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "chrysoteuchia": {
+    "name": "Chrysoteuchia",
+    "image": "chrysoteuchia.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "propylea": {
+    "name": "Propylea",
+    "image": "propylea.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "volucella": {
+    "name": "Volucella",
+    "image": "volucella.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "salticus": {
+    "name": "Salticus",
+    "image": "salticus.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "pholcus": {
+    "name": "Pholcus",
+    "image": "pholcus.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "orthosia": {
+    "name": "Orthosia",
+    "image": "orthosia.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "euthrix": {
+    "name": "Euthrix",
+    "image": "euthrix.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "pseudochorthippus": {
+    "name": "Pseudochorthippus",
+    "image": "pseudochorthippus.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "emmelina": {
+    "name": "Emmelina",
+    "image": "emmelina.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "callimorpha": {
+    "name": "Callimorpha",
+    "image": "callimorpha.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "phragmatobia": {
+    "name": "Phragmatobia",
+    "image": "phragmatobia.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "calliteara": {
+    "name": "Calliteara",
+    "image": "calliteara.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "coenonympha": {
+    "name": "Coenonympha",
+    "image": "coenonympha.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "aeshna": {
+    "name": "Aeshna",
+    "image": "aeshna.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "leptophyes": {
+    "name": "Leptophyes",
+    "image": "leptophyes.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "melanargia": {
+    "name": "Melanargia",
+    "image": "melanargia.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "hoplodrina": {
+    "name": "Hoplodrina",
+    "image": "hoplodrina.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "anoplotrupes": {
+    "name": "Anoplotrupes",
+    "image": "anoplotrupes.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "xanthorhoe": {
+    "name": "Xanthorhoe",
+    "image": "xanthorhoe.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "dysstroma": {
+    "name": "Dysstroma",
+    "image": "dysstroma.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "eratigena": {
+    "name": "Eratigena",
+    "image": "eratigena.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "phalera": {
+    "name": "Phalera",
+    "image": "phalera.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "acronicta": {
+    "name": "Acronicta",
+    "image": "acronicta.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "macrothylacia": {
+    "name": "Macrothylacia",
+    "image": "macrothylacia.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "gymnoscelis": {
+    "name": "Gymnoscelis",
+    "image": "gymnoscelis.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "vespa": {
+    "name": "Vespa",
+    "image": "vespa.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "anthophora": {
+    "name": "Anthophora",
+    "image": "anthophora.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "diplolepis": {
+    "name": "Diplolepis",
+    "image": "diplolepis.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "orgyia": {
+    "name": "Orgyia",
+    "image": "orgyia.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "dorcus": {
+    "name": "Dorcus",
+    "image": "dorcus.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "laothoe": {
+    "name": "Laothoe",
+    "image": "laothoe.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "lasiocampa": {
+    "name": "Lasiocampa",
+    "image": "lasiocampa.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "camptogramma": {
+    "name": "Camptogramma",
+    "image": "camptogramma.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "aphomia": {
+    "name": "Aphomia",
+    "image": "aphomia.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "melolontha": {
+    "name": "Melolontha",
+    "image": "melolontha.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "ochropleura": {
+    "name": "Ochropleura",
+    "image": "ochropleura.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "misumena": {
+    "name": "Misumena",
+    "image": "misumena.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "halyzia": {
+    "name": "Halyzia",
+    "image": "halyzia.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "hofmannophila": {
+    "name": "Hofmannophila",
+    "image": "hofmannophila.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "osmia": {
+    "name": "Osmia",
+    "image": "osmia.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "andricus": {
+    "name": "Andricus",
+    "image": "andricus.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "epirrhoe": {
+    "name": "Epirrhoe",
+    "image": "epirrhoe.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "anania": {
+    "name": "Anania",
+    "image": "anania.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "anthophila": {
+    "name": "Anthophila",
+    "image": "anthophila.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "bibio": {
+    "name": "Bibio",
+    "image": "bibio.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "gastrophysa": {
+    "name": "Gastrophysa",
+    "image": "gastrophysa.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "eilema": {
+    "name": "Eilema",
+    "image": "eilema.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "melanostoma": {
+    "name": "Melanostoma",
+    "image": "melanostoma.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "pholidoptera": {
+    "name": "Pholidoptera",
+    "image": "pholidoptera.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "merodon": {
+    "name": "Merodon",
+    "image": "merodon.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "syricoris": {
+    "name": "Syricoris",
+    "image": "syricoris.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "agriphila": {
+    "name": "Agriphila",
+    "image": "agriphila.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "libellula": {
+    "name": "Libellula",
+    "image": "libellula.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "campaea": {
+    "name": "Campaea",
+    "image": "campaea.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "zygiella": {
+    "name": "Zygiella",
+    "image": "zygiella.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "lacanobia": {
+    "name": "Lacanobia",
+    "image": "lacanobia.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "chrysolina": {
+    "name": "Chrysolina",
+    "image": "chrysolina.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "roeseliana": {
+    "name": "Roeseliana",
+    "image": "roeseliana.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "syritta": {
+    "name": "Syritta",
+    "image": "syritta.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "cantharis": {
+    "name": "Cantharis",
+    "image": "cantharis.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "luperina": {
+    "name": "Luperina",
+    "image": "luperina.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "hypena": {
+    "name": "Hypena",
+    "image": "hypena.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "mythimna": {
+    "name": "Mythimna",
+    "image": "mythimna.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "psyllobora": {
+    "name": "Psyllobora",
+    "image": "psyllobora.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "neuroterus": {
+    "name": "Neuroterus",
+    "image": "neuroterus.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "orthetrum": {
+    "name": "Orthetrum",
+    "image": "orthetrum.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "argynnis": {
+    "name": "Argynnis",
+    "image": "argynnis.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "eupeodes": {
+    "name": "Eupeodes",
+    "image": "eupeodes.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "platycheirus": {
+    "name": "Platycheirus",
+    "image": "platycheirus.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "agrochola": {
+    "name": "Agrochola",
+    "image": "agrochola.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "colostygia": {
+    "name": "Colostygia",
+    "image": "colostygia.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "rivula": {
+    "name": "Rivula",
+    "image": "rivula.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "cercopis": {
+    "name": "Cercopis",
+    "image": "cercopis.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "tachystola": {
+    "name": "Tachystola",
+    "image": "tachystola.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "charanyca": {
+    "name": "Charanyca",
+    "image": "charanyca.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "patania": {
+    "name": "Patania",
+    "image": "patania.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "chloromyia": {
+    "name": "Chloromyia",
+    "image": "chloromyia.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "xylocampa": {
+    "name": "Xylocampa",
+    "image": "xylocampa.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "triodia": {
+    "name": "Triodia",
+    "image": "triodia.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "cameraria": {
+    "name": "Cameraria",
+    "image": "cameraria.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "sphaerophoria": {
+    "name": "Sphaerophoria",
+    "image": "sphaerophoria.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "aricia": {
+    "name": "Aricia",
+    "image": "aricia.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "calvia": {
+    "name": "Calvia",
+    "image": "calvia.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "endrosis": {
+    "name": "Endrosis",
+    "image": "endrosis.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "nuctenea": {
+    "name": "Nuctenea",
+    "image": "nuctenea.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "macroglossum": {
+    "name": "Macroglossum",
+    "image": "macroglossum.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "amblyptilia": {
+    "name": "Amblyptilia",
+    "image": "amblyptilia.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "cucullia": {
+    "name": "Cucullia",
+    "image": "cucullia.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "mormo": {
+    "name": "Mormo",
+    "image": "mormo.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "eudonia": {
+    "name": "Eudonia",
+    "image": "eudonia.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "thalpophila": {
+    "name": "Thalpophila",
+    "image": "thalpophila.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "abraxas": {
+    "name": "Abraxas",
+    "image": "abraxas.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "alucita": {
+    "name": "Alucita",
+    "image": "alucita.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "epistrophe": {
+    "name": "Epistrophe",
+    "image": "epistrophe.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
+  "lilioceris": {
+    "name": "Lilioceris",
+    "image": "lilioceris.png",
+    "stats": {
+      "attack": 0,
+      "defense": 0,
+      "speed": 0
+    },
+    "rarity": "Unknown"
+  },
   "adalia": {
     "name": "Adalia",
     "image": "adalia.png",
