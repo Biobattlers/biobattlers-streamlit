@@ -94,6 +94,7 @@ if 'last_uploaded_name' not in st.session_state:
     st.session_state.last_uploaded_name = None
 
 # --- Wild Battle Function ---
+
 def run_wild_battle():
     if not st.session_state.collection:
         st.warning("📦 You need at least one creature in your collection to battle!")
@@ -116,8 +117,45 @@ def run_wild_battle():
 
         wild_key = random.choice(list(CREATURE_STATS.keys()))
         wild_stats = CREATURE_STATS[wild_key]["stats"]
-        wild_image = AWS_BUCKET_URL + f"{wild_key}.png"
 
+        # Fallback logic for wild creature image
+        wild_image = None
+        genus_species = f"{wild_key}.png"
+        genus_plus_species = f"{wild_key.replace('_', '+')}.png"
+        genus_only = f"{wild_key.split('_')[0]}.png"
+
+        for filename in [genus_species, genus_plus_species, genus_only]:
+            candidate_url = AWS_BUCKET_URL + filename
+            img_check = requests.get(candidate_url)
+            if img_check.status_code == 200:
+                wild_image = candidate_url
+                break
+
+        if not wild_image:
+            wild_image = "https://biobattlers-images.s3.eu-north-1.amazonaws.com/noclue.png"
+
+        def parse_stats(stats_str):
+            try:
+                parts = stats_str.split("|")
+                return sum([int(part.strip().split(":")[1]) for part in parts])
+            except:
+                return 0
+
+        player_score = parse_stats(player_creature["stats"])
+        wild_score = parse_stats(f"Attack: {wild_stats['attack']} | Defense: {wild_stats['defense']} | Speed: {wild_stats['speed']}")
+
+        st.markdown("## ⚔️ Wild Battle Begins!")
+        st.image(player_creature["imageUrl"], width=150, caption=f"🧬 {player_creature['name']}")
+        st.image(wild_image, width=150, caption=f"🌿 Wild {wild_key.title().replace('_', ' ')}")
+        st.markdown(f"**Your Power:** {player_score}  |  **Wild Power:** {wild_score}")
+
+        if player_score > wild_score:
+            player_creature["wins"] = player_creature.get("wins", 0) + 1
+            st.success(f"🎉 You won! {player_creature['name']} now has {player_creature['wins']} win(s)!")
+        elif player_score < wild_score:
+            st.error("💀 Defeat! The wild creature overpowered you.")
+        else:
+            st.info("🤝 It's a draw. The wild creature retreats... for now.")
         def parse_stats(stats_str):
             try:
                 parts = stats_str.split("|")
